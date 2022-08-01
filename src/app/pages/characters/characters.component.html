@@ -1,1 +1,11 @@
-<p>characters works!</p>
+<ul class="characters">
+  <li *ngFor="let c of models">
+    <div class="cabecera">
+      <a routerLink="/proyect-detail/{{c.id}}">
+        <span class="badge">{{c.id}}</span>
+        {{c.name}}
+      </a>
+      <button type="button" class="add" title="add hero" >add</button>
+      </div>
+  </li>
+</ul>
