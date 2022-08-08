@@ -3,8 +3,18 @@
   <ngb-panel id="{{ e.id }}" title="{{ e.name }}">
     <ng-template ngbPanelContent >
       <button (click)="list(e.characters)">cargar</button>
+      <div class="form-group">
+        <input
+      type="text"
+      class="forms-control"
+      placeholder="Buscar.."
+      value=""
+      [(ngModel)]="filterCha"
+      name="filterpost"
+    />
+      </div>
       <ul class="characters">
-        <li *ngFor="let c of modelsC">
+        <li *ngFor="let c of modelsC | filter: filterCha">
           <div class="card">
             <div class="card-inner">
               <div class="card-front">

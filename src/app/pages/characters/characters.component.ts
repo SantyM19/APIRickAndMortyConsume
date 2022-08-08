@@ -19,6 +19,7 @@ export class CharactersComponent implements OnInit {
   alertActive: boolean = false;
   alertWActive: boolean = false;
   alertWWActive: boolean = false;
+  filterCha: string = "";
   models : Model[] = [];
   modelsC : ModelC[] = [];
   characters: string[] = [];
@@ -41,7 +42,7 @@ export class CharactersComponent implements OnInit {
   };
   alertWW: Alert = {
     type: this.typeW.type,
-    message: "Cantiadad maxima!"
+    message: "Cantidad maxima!"
   };
 
   constructor( private service: Service) { }
