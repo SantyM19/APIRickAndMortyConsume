@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
+import { Character as ModelC } from '../models/Character';
 import { Episode as Model } from '../models/Episode';
 import { Info } from '../models/Info';
 
@@ -34,11 +35,10 @@ export class Service {
   }
 
   /** GET model by id. Will 404 if id not found */
-  getModel(id: number): Observable<Model> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Model>(url).pipe(
-      tap((_) => this.log(`fetched model id=${id}`)),
-      catchError(this.handleError<Model>(`getModel id=${id}`))
+  getModel(url: string): Observable<ModelC> {
+    return this.http.get<ModelC>(url).pipe(
+      tap((_) => this.log(`fetched model id`)),
+      catchError(this.handleError<ModelC>(`getModel id`))
     );
   }
 

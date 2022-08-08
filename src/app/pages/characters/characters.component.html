@@ -1,11 +1,45 @@
-<ul class="characters">
-  <li *ngFor="let c of models">
-    <div class="cabecera">
-      <a routerLink="/proyect-detail/{{c.id}}">
-        <span class="badge">{{c.id}}</span>
-        {{c.name}}
-      </a>
-      <button type="button" class="add" title="add hero" >add</button>
-      </div>
-  </li>
+<ng-container >
+<ngb-accordion [closeOthers]="true" activeIds="static-1" *ngFor="let e of models" class="accordion" >
+  <ngb-panel id="{{ e.id }}" title="{{ e.name }}">
+    <ng-template ngbPanelContent >
+      <button (click)="list(e.characters)">cargar</button>
+      <ul class="characters">
+        <li *ngFor="let c of modelsC">
+          <div class="card">
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="{{ c.image }}" alt="Avatar" style="width: 100%" />
+                <div class="container">
+                  <h4><b>{{c.name}}</b></h4>
+                  <p>{{c.species}}</p>
+                </div>
+              </div>
+              <div class="card-back">
+                <h3> {{c.name}}</h3>
+                <div class="content">
+                  <p>status: {{c.status}}</p>
+                  <p>specie: {{c.species}}</p>
+                  <p>gender: {{c.gender}}</p>
+                  <p>origin:{{c.origin.name}}</p>
+                  <p>location:  {{c.location.name}}</p>
+                </div>
+                <p><button (click)="addNew(c.name)">Add</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+<ngb-alert  class="alert" [type]="type.type" *ngIf="alertActive" (closed)="closeAlert()" > {{ alert.message }} </ngb-alert>
+<ngb-alert  class="alert" [type]="typeW.type" *ngIf="alertWActive" (closed)="closeAlertW()" > {{ alertW.message }} </ngb-alert>
+<ngb-alert  class="alert" [type]="typeW.type" *ngIf="alertWWActive" (closed)="closeAlertWW()" > {{ alertWW.message }} </ngb-alert>
+
+<ul class="listName">
+    <li *ngFor="let n of listName" class="name">
+      <p> {{n}} </p>
+    </li>
 </ul>
+</ng-container>
