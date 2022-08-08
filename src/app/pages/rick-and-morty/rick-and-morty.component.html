@@ -1,1 +1,27 @@
-<p>rick-and-morty works!</p>
+<ul class="characters">
+  <li *ngFor="let c of modelsC">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="{{ c.image }}" alt="Avatar" style="width: 100%" />
+          <div class="container">
+            <h4><b>{{c.name}}</b></h4>
+            <p>{{c.species}}</p>
+          </div>
+        </div>
+        <div class="card-back">
+          <h3> {{c.name}}</h3>
+          <div class="content">
+            <p>status: {{c.status}}</p>
+            <p>specie: {{c.species}}</p>
+            <p>gender: {{c.gender}}</p>
+            <p>origin:{{c.origin.name}}</p>
+            <p>location:  {{c.location.name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<button (click)="more()">Cargar mas</button>

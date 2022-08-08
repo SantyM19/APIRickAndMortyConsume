@@ -13,9 +13,8 @@ import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class Service {
-  //private apiUrl = 'api/heroes';  // URL to web api
   private apiUrl = `${environment.API_URL}/episode`;
-  //private apiUrl = `apidemo/proyectos`;
+  private apiUrlCharacters = `${environment.API_URL}/character`;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -31,6 +30,21 @@ export class Service {
     return this.http.get<Info>(this.apiUrl).pipe(
       tap((_) => this.log('fetched episode')),
       catchError(this.handleError<Info>('get episodes'))
+    );
+  }
+
+  /** GET model from the server */
+  getAllModelsCharacter(): Observable<Info> {
+    return this.http.get<Info>(this.apiUrlCharacters).pipe(
+      tap((_) => this.log('fetched character')),
+      catchError(this.handleError<Info>('get characters'))
+    );
+  }
+  /** GET model from the server */
+  getAllModelsCharacterBy(ruta: string): Observable<Info> {
+    return this.http.get<Info>(ruta).pipe(
+      tap((_) => this.log('fetched character')),
+      catchError(this.handleError<Info>('get characters'))
     );
   }
 

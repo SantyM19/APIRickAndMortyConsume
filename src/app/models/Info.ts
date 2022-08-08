@@ -1,6 +1,8 @@
-import { Character } from "./Character";
-
 export interface Info{
-  info: {},
+  info: {
+    count: number,
+    next: string,
+    pages: number
+  },
   results: any[]
 }
